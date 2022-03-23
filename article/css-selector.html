@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>CSS 選擇器、選取器（Selector）種類簡介 - JoplinBook_Site</title>
+  </head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">JoplinBook_Site</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">CSS 選擇器、選取器（Selector）種類簡介</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1607336219918"
+                  >2020-12-07 18:16</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1607336219918"
+                  >2020-12-07 18:16</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><p>這篇就要來介紹選擇器（Selector ，也有些人稱之選取器）的種類及應用。</p>
+<p><a id="more" class="jop-noMdConv"></a><br />
+選擇器，顧名思義就是選擇您要定義 CSS 的位置。其種類大約分成以下幾種：</p>
+<ol>
+<li>Class selectors（Class選擇器，Dreamweaver稱為類別選擇器，這樣翻譯也對啦）</li>
+<li>ID selectors（ID選擇器）</li>
+<li>Type selectors（型態選擇器，Dreamweaver稱為標籤選擇器，因為套用於HTML標籤）</li>
+<li>Universal selector（通用選擇器）</li>
+<li>Attribute selectors（屬性選擇器）</li>
+<li>Descendant combinator（後代選擇器）</li>
+<li>Child combinator（子選擇器）</li>
+<li>Adjacent sibling combinator（同層相鄰選擇器）</li>
+<li>General sibling combinator（同層全體選擇器）</li>
+<li>Pseudo-classes（偽類選擇器）</li>
+<li>Pseudo-elements（偽元素選擇器）</li>
+<li>Groups of selectors（群組選擇器）</li>
+</ol>
+<p>W3C 定義1~5為單純選擇器 （Simple selectors），6~9為組合選擇器（Combinators）。</p>
+<h3 id="class-selectorsclass選擇器">Class selectors（Class選擇器）</h3>
+<p>「.」開頭，名稱可自訂，一張網頁可有多個class屬性值。<br />
+CSS</p>
+<p>.emText { color:red;}</p>
+<p>HTML</p>
+<p>&lt;p&gt;此段會套用紅色&lt;/p&gt;</p>
+<p>ID selectors（ID選擇器）</p>
+<p>「#」開頭，名稱可自訂，一張網頁只能有一個ID屬性值。</p>
+<p>CSS</p>
+<p>#emText { color:red;}</p>
+<p>HTML</p>
+<p>&lt;p id=“emText”&gt;此段會套用紅色&lt;/p&gt;</p>
+<p>Type selectors（型態選擇器）</p>
+<p>設定於HTML的標籤上，網頁上所有的標籤都會套用。</p>
+<p>CSS</p>
+<p>h1 {color:red;}<br />
+p {color:black;}</p>
+<p>HTML</p>
+<p>&lt;h1&gt; 標題會套用紅色&lt;/h1&gt;<br />
+&lt;p&gt; 段落會套用黑色&lt;/p&gt;</p>
+<p>Universal selector（通用選擇器）</p>
+<p>使用字元「*」，整張網頁下的所有元素都會套用設定。</p>
+<p>CSS</p>
+<p>* {color:red;}</p>
+<p>HTML</p>
+<p>&lt;h1&gt; 標題會套用紅色&lt;/h1&gt;<br />
+&lt;p&gt; 段落會套用紅色&lt;/p&gt;</p>
+<p>Attribute selectors（屬性選擇器）</p>
+<p>針對有套用特定屬性的標籤做CSS設定。例如：</p>
+<p>E[att]   //套用於含att屬性的E標籤（簡易屬性選擇器）<br />
+E[att=val]   //套用於att屬性值為val的E標籤（精確屬性選擇器）<br />
+E[att~=val]   //套用於att屬性值包含val的E標籤（部份屬性選擇器）</p>
+<p>CSS</p>
+<p>div {color:black;}<br />
+div[title] {color:red;}<br />
+div[title=fishbecat] {color:green;}<br />
+div[title~=fishbecat] {color:blue;}</p>
+<p>HTML</p>
+<p>&lt;div&gt; 此區塊會套用黑色&lt;/div&gt;<br />
+&lt;div title=“blog”&gt; 此區塊會套用紅色&lt;/div&gt;<br />
+&lt;div title=“fishbecat”&gt; 此區塊會套用綠色&lt;/div&gt;<br />
+&lt;div title=“fishbecat’s blog”&gt;此區塊會套用藍色&lt;/div&gt;</p>
+<p>Descendant combinator（後代選擇器）</p>
+<p>E F，利用空白鍵區隔兩個元素，表示在 E 元素內的 F 元素才會套用。</p>
+<p>CSS</p>
+<p>a { color:black;}<br />
+h1 a { color:red;}<br />
+#wrapper a { color:green;}</p>
+<p>HTML</p>
+<p>&lt;a&gt; 只設定a標籤會套用黑色&lt;/a&gt;</p>
+<p>&lt;h1&gt;<br />
+&lt;a&gt;在h1裡的a標籤會套用紅色&lt;/a&gt;<br />
+&lt;/h1&gt;</p>
+<p>&lt;div id=“wrapper”&gt;<br />
+&lt;a&gt;在ID=wrapper裡的a標籤會套用綠色&lt;/a&gt;<br />
+&lt;/div&gt;</p>
+<p>Child combinator（子選擇器）</p>
+<p>E &gt; F，利用&gt;區隔兩個元素，表示在有父子關係的元素才會套用。與後代不同的是 E 及 F 元素之間不能再插入其它的元素，否則就不是父子關係了。</p>
+<p>CSS</p>
+<p>#wrapper &gt; p{ color:red;}<br />
+#wrapper p { color:black;}</p>
+<p>HTML</p>
+<p>&lt;div id=“wrapper”&gt;<br />
+&lt;p&gt;在id=wrapper區塊裡的段落會套用紅色&lt;/p&gt;<br />
+&lt;/div&gt;</p>
+<p>&lt;div id=“wrapper”&gt;<br />
+&lt;span&gt;<br />
+&lt;p&gt;中間多了span就只會套用黑色&lt;/p&gt;<br />
+&lt;/span&gt;<br />
+&lt;/div&gt;</p>
+<p>Adjacent sibling combinator（同層相鄰選擇器）</p>
+<p>E + F，利用+區隔兩個元素，表示在與 E 同一層關係的相鄰 F 元素才會套用。</p>
+<p>CSS</p>
+<p>h1 { color:red;}<br />
+h1 + p { color:green;}</p>
+<p>HTML</p>
+<p>&lt;h1&gt;標題1會套用紅色&lt;/h1&gt;<br />
+&lt;p&gt;跟h1相鄰的p會套用綠色&lt;/p&gt;<br />
+&lt;p&gt;沒有跟h1相鄰的p會套用預設值&lt;/p&gt;</p>
+<p>General sibling combinator（同層全體選擇器）</p>
+<p>E ~ F，利用~區隔兩個元素，表示在與 E 同一層關係的 F 元素全部都會套用。<br />
+不過這是CSS 3的選擇器。目前並沒有所有瀏覽器都支援，Dreamweaver CS4也沒支援。</p>
+<p>CSS</p>
+<p>h1 { color:red;}<br />
+h1 ~ p { color:green;}</p>
+<p>HTML</p>
+<p>&lt;h1&gt;標題1會套用紅色&lt;/h1&gt;<br />
+&lt;p&gt;h1接下來p都會套用綠色&lt;/p&gt;<br />
+&lt;p&gt;h1接下來p都會套用綠色&lt;/p&gt;</p>
+<p>Pseudo-classes（偽類選擇器）</p>
+<p>這個名詞可能許多人都覺得陌生，但提到a:link、a:visited、a:hover、a:active應該就很熟悉了吧！</p>
+<p>:link   //連結平常的樣式<br />
+:visited   //連結查閱後的樣式<br />
+:hover   //滑鼠滑入的樣式<br />
+:active   //滑鼠按下的樣式<br />
+:focus   //目標為焦點的樣式<br />
+:lang(E)   //當語言為E的樣式<br />
+:first-child   //第一個元素的樣式</p>
+<p>CSS</p>
+<p>p:first-child { color:red;}<br />
+p:lang(zh-TW) { color:green;}</p>
+<p>HTML</p>
+<p>&lt;div&gt;<br />
+&lt;p&gt;第一個 p 會套用紅色&lt;/p&gt;<br />
+&lt;p&gt;其它的 p 不會變色&lt;/p&gt;<br />
+&lt;/div&gt;</p>
+<p>&lt;div&gt;<br />
+&lt;p lang=“zh-TW”&gt;語言為 zh-TW 會套用綠色&lt;/p&gt;<br />
+&lt;p lang=“en”&gt;語言為 en 不會變色&lt;/p&gt;<br />
+&lt;/div&gt;</p>
+<p>Pseudo-elements（偽元素選擇器）</p>
+<p>其實偽元素選擇器蠻多的，小魚就只先介紹 :first-line、:first-letter 這兩個元老級的偽元素。</p>
+<p>:first-line   //元素的第一行會套用<br />
+:first-letter   //元素的第一個字母會套用<br />
+:after   //在元素後加上內容（一般會配 content 屬性）<br />
+:before   //在元素前加上內容（一般會配 content 屬性）</p>
+<p>CSS</p>
+<p>p:first-line { color:red;}<br />
+p:first-letter { color:green;}<br />
+.price:before { content:“NT$”;}<br />
+.price:after { content:“元整”;}</p>
+<p>HTML</p>
+<p>&lt;div&gt;<br />
+&lt;p&gt;<br />
+第一行會套用紅色&lt;br/&gt;<br />
+第二行以後不會變色<br />
+&lt;/p&gt;<br />
+&lt;/div&gt;</p>
+<p>&lt;div&gt;<br />
+&lt;p&gt;<br />
+第一個字會套用綠色&lt;br/&gt;<br />
+其它的字不會變色<br />
+&lt;/p&gt;<br />
+&lt;/div&gt;</p>
+<p>&lt;div&gt;<br />
+數字前加上"NT$"，數字後加上"元整"：&lt;span&gt; 1000 &lt;/span&gt;<br />
+&lt;/div&gt;</p>
+<p>Groups of selectors（群組選擇器）</p>
+<p>您還可以用「,」逗點區隔，同時對多個選擇器定義樣式。<br />
+E, F, G，同時針對E、F、G元素設定樣式。</p>
+<p>CSS</p>
+<p>h1, h2, p {color:red;}</p>
+<p>HTML</p>
+<p>&lt;h1&gt;群組內的元素都套用紅色&lt;/h1&gt;<br />
+&lt;h2&gt;群組內的元素都套用紅色&lt;/h2&gt;<br />
+&lt;p&gt;群組內的元素都套用紅色&lt;/p&gt;<br />
+&lt;a&gt;群組沒定義的元素不會變色&lt;/a&gt;</p>
+<p><a title="http://www.facebook.com/share.php?u=http://www.j4.com.tw/web-design/css-%e9%81%b8%e6%93%87%e5%99%a8%e3%80%81%e9%81%b8%e5%8f%96%e5%99%a8%ef%bc%88selector%ef%bc%89%e7%a8%ae%e9%a1%9e%e7%b0%a1%e4%bb%8b/" href="http://www.facebook.com/share.php?u=http://www.j4.com.tw/web-design/css-%e9%81%b8%e6%93%87%e5%99%a8%e3%80%81%e9%81%b8%e5%8f%96%e5%99%a8%ef%bc%88selector%ef%bc%89%e7%a8%ae%e9%a1%9e%e7%b0%a1%e4%bb%8b/"><img src="/_resources/b28cd149b285485c9bd944ccc18f1a37.gif" title="Share on Facebook" /></a><a title="Share on Facebook" href="http://www.facebook.com/share.php?u=http://www.j4.com.tw/web-design/css-%e9%81%b8%e6%93%87%e5%99%a8%e3%80%81%e9%81%b8%e5%8f%96%e5%99%a8%ef%bc%88selector%ef%bc%89%e7%a8%ae%e9%a1%9e%e7%b0%a1%e4%bb%8b/">Share on Facebook</a></p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
